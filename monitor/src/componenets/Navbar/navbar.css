@@ -1,0 +1,46 @@
+.navBar{
+    height: 70px;
+    display: flex;
+    width: 100%;
+    background-color: #AACB73;
+    margin: 10px;
+    display:flex;
+    justify-content:center;
+    align-items: center;
+    
+}
+/* .left{
+    flex:3;
+    display:flex;
+    justify-content:end;
+    align-items: center;
+  
+
+}
+.right{
+    flex:1;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+   
+    
+} */
+.search{
+    margin-left: 10px;
+    border: none;
+    border-radius: 5px;
+}
+img{
+    height: 100%;
+    padding:10px;
+
+}
+@media screen and (max-width:480px) {
+
+    h2{
+        display:none;
+    }
+}
+@media screen and (max-width:600px) {
+    .icon{display: none;}
+}
