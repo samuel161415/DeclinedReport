@@ -19,6 +19,8 @@ import rowContentTotal from '../helper/rowContentTotal';
 import rowContent from '../helper/rowContent';
 
 const Body=()=>{
+ 
+  const today=new Date().toISOString().split('T')[0]
 
   const [atmName,setAtmName]=useState([])
   const [Atm,setAtm]=useState({})
@@ -28,10 +30,12 @@ const Body=()=>{
   const [totalRow,setTotalRow]=useState([0])
   const [trxRow,setTrxRow]=useState([])
   const [showTable,setShowTable]=useState(false)
-  const [startDate,setStartDate]=useState("2023-02-13")
-  const [endDate,setEndDate]=useState("2023-02-13")
+  const [startDate,setStartDate]=useState(today)
+  const [endDate,setEndDate]=useState(today)
   const [sDate,setSDate]=useState()
   const [eDate,setEDate]=useState()
+  const [psDate,setPsDate]=useState(today)
+  const [peDate,setPeDate]=useState(today)
   
 
 
@@ -44,10 +48,9 @@ const Body=()=>{
         return res
       })
       setrowss(res)
-      console.log('eachTotal',eachTotal,' total',total);
       let temp=eachTotal.slice(0,13)
       let temp2=eachTotal.slice(13,16)
-      let conditions=['IF','IP','C400','HTX','WLE','CI','PIE','NA','C907','EC','E','NO_ARPC','PI','TOTAL']
+      let conditions=['INSUFFICIENT_FUNDS','INCORRECT_PIN','CODE 400 DESC','HOST_TX_TIMEOUT','WITHDRAWAL_LMT_EXCEEDED','CONTACT_ISSUER','PIN_TRIES_EXCEEDED_CAP','NO_ACCOUNT','CODE_907','EXPIRED_CARD_CAP','NO_ARPC','*E*','POWER_INTERRUPTION_DURING','TOTAL']
       let trxn=['WITHDRAW','BALANCE-INQUIRY','FAST-CASH-WITHDRAWAL','TOTAL'] 
 
       temp.push(total)
@@ -85,7 +88,7 @@ const Body=()=>{
            endDate:endDate,
           
           });
-          console.log("successData",res.data)
+          // console.log("successData",res.data)
           
           if(res.data){
             let t=0
@@ -108,14 +111,23 @@ const Body=()=>{
    }
 
    makeRequest()
-   },[startDate,endDate])
+   },[startDate,endDate,showTable])
 
    const handleClick=(e)=>{
+    console.log('showtable',showTable);
        if(sDate && eDate){
+        console.log('sdate',sDate,' edate ',eDate);
          setStartDate(sDate.toString())
          setEndDate(eDate.toString())
+         setShowTable(false)
+         console.log('startdate',startDate,' enddtate ',endDate,' prvs',psDate,' pev ',peDate);
        }
-       setShowTable(false)
+      //  if(psDate.toString()!==startDate.toString()||peDate.toString()!=endDate.toString()){
+      //       setShowTable(!showTable)
+      //       setPsDate(startDate)
+      //       setPeDate(endDate)
+      //  }
+       
       
    }
    const tableRef = useRef(null);

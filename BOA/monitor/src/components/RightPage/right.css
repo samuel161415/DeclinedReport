@@ -1,0 +1,30 @@
+.right_page{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    padding-left: 30px;
+    
+
+}
+.right_txt_wrapper{
+    display:flex;
+    padding:10px;
+}
+.rightError{
+    margin: 5px;
+    padding:5px 10px;
+    border:solid #AACB73 1px;
+    border-radius: 5px;
+    text-align:center,
+  
+}
+.rightErrorTxt{
+ margin-right: 10px;
+}
+@media screen and (max-width:830px){
+    .right_txt_wrapper{
+        display:none;
+       
+    }
+}

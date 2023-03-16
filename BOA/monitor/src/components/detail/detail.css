@@ -1,0 +1,10 @@
+.detail_table{
+ border: solid 1px #AACB73  ;
+}
+.detail_row{
+  padding:10px;
+  border: solid  #AACB73 ;
+}
+td{
+  padding-left: 10px;
+}
